@@ -30,8 +30,8 @@ def send_click(xpath):
 
 # Efetua o login
 def login():
-    send_keys('//*[@id="loginForm"]/div/div[1]/div/label/input', "vinicius.8000@gmail.com")
-    send_keys('//*[@id="loginForm"]/div/div[2]/div/label/input', "neezws0nt8t")
+    send_keys('//*[@id="loginForm"]/div/div[1]/div/label/input', "Login")
+    send_keys('//*[@id="loginForm"]/div/div[2]/div/label/input', "Senha")
     send_click('//*[@id="loginForm"]/div/div[3]/button/div')
 
 
