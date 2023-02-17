@@ -1,9 +1,10 @@
 import openai
+import GetEnv
 
 def ChatGpt(prompt):
 
     # Adicione sua chave de API do OpenAI aqui
-    openai.api_key = "API Key"
+    openai.api_key = GetEnv.GetApiKey()
 
     # Defina o modelo GPT-3 a ser usado
     model_engine = "text-davinci-003"

@@ -1,8 +1,10 @@
 from selenium import webdriver
+from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import ReturnLastMessage
+import GetEnv
 import OpenAI
 import time
 import random
@@ -27,11 +29,10 @@ def send_click(xpath):
     wait = WebDriverWait(driver, 10)
     wait.until(EC.presence_of_element_located((By.XPATH, xpath))).click()
 
-
 # Efetua o login
 def login():
-    send_keys('//*[@id="loginForm"]/div/div[1]/div/label/input', "Login")
-    send_keys('//*[@id="loginForm"]/div/div[2]/div/label/input', "Senha")
+    send_keys('//*[@id="loginForm"]/div/div[1]/div/label/input', GetEnv.GetUsuarioInstagram())
+    send_keys('//*[@id="loginForm"]/div/div[2]/div/label/input', GetEnv.GetSenhaInstagram())
     send_click('//*[@id="loginForm"]/div/div[3]/button/div')
 
 
@@ -51,8 +52,6 @@ def EnterMessageInsta():
     send_click(
         '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[1]/div[2]/div/div/div/div/div[1]/div')
 
-
-
 # Envia uma mensagem
 def SendMessage(message):
     # Escreve a mensagem no textarea
@@ -71,7 +70,7 @@ def MessageHtml():
 
     # Encontre o elemento de mensagem na página
     element = wait.until(EC.presence_of_element_located((By.XPATH,
-                                                         '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[2]/div[2]/div/div[1]/div')))
+        '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[2]/div[2]/div/div[1]/div')))
 
     # Obtenha a última mensagem
     last_message = element.get_attribute("innerHTML")
