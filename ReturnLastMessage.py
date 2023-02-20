@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup
 
 def extract_messages(html):
@@ -21,3 +22,6 @@ def extract_messages(html):
             received_messages.append(message_content.text)
 
     return received_messages, sent_messages
+
+
+
