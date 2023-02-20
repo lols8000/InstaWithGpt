@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup
 
+#Extrai a conversa completa do usuário
 def extract_messages(html):
     soup = BeautifulSoup(html, 'html.parser')
 
