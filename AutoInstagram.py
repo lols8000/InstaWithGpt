@@ -12,16 +12,21 @@ driver = webdriver.Firefox()
 driver.get(site)
 driver.maximize_window()
 
+def type_like_gpt(text, xpathTextarea):
+    for character in text:
+        send_keys(xpathTextarea, character)
+        time.sleep(0.05)
+
 def send_keys(xpath, key):
     # Adicione um tempo de espera explícito
-    time.sleep(4)
-    wait = WebDriverWait(driver, 10)
+    #time.sleep(4)
+    wait = WebDriverWait(driver, 20)
     wait.until(EC.presence_of_element_located((By.XPATH, xpath))).send_keys(key)
 
 def send_click(xpath):
     # Adicione um tempo de espera explícito
     time.sleep(4)
-    wait = WebDriverWait(driver, 10)
+    wait = WebDriverWait(driver, 20)
     wait.until(EC.presence_of_element_located((By.XPATH, xpath))).click()
 
 # Efetua o login
@@ -58,7 +63,7 @@ def SendMessage(message):
     xpathSend = '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[2]/div[2]/div/div[2]/div/div/div[3]'
 
     # Escreve a mensagem no textarea
-    send_keys(xpathTextarea, message)
+    type_like_gpt(message, xpathTextarea)
     # Envia a mesnagem
     send_click(xpathSend)
 
